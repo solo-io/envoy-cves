@@ -30,22 +30,22 @@ func RunChecks(er *EnvoyRunner) error {
 		return err
 	}
 	if b {
-		fmt.Println("✔ Success! your envoy was tested and is immune to CVE-2019-9901. Make sure that normalize_path is turned on in your HCM settings.")
+		fmt.Println("✔ Success! your envoy was tested and it is immune to CVE-2019-9901. Make sure the option normalize_path is turned on in your HCM settings.")
 	} else {
-		fmt.Println("✘ Fail! your envoy did not normalize the path - it is vulnerable to CVE-2019-9901")
+		fmt.Println("✘ Fail! your envoy did not normalize the path - it is vulnerable to CVE-2019-9901. If you are using a recent version of envoy, make sure the option normalize_path is turned on in your HCM settings.")
 	}
 
 	// nil checks may crash envoy so do them last.
 	headers, err := er.CheckNilErrors()
 	if err != nil {
-		er.Log("Error checking nil headers")
+		er.Log("Error checking NIL headers")
 		return err
 	}
 
 	if headers {
-		fmt.Println("✔ Success! your envoy was tested and is immune to CVE-2019-9900")
+		fmt.Println("✔ Success! your envoy was tested and it is immune to CVE-2019-9900")
 	} else {
-		fmt.Println("✘ Fail! your envoy accepts nil in headers - it is vulnerable to CVE-2019-9900")
+		fmt.Println("✘ Fail! your envoy accepts NIL in headers - it is vulnerable to CVE-2019-9900")
 	}
 
 	return nil
