@@ -19,5 +19,6 @@ envoy-cves-darwin.sha256: envoy-cves-darwin
 .PHONY: sha
 sha: envoy-cves-linux.sha256 envoy-cves-darwin.sha256
 
+.PHONY : clean
 clean:
-	rm envoy-cves-linux.sha256 envoy-cves-darwin.sha256 envoy-cves envoy-cves-linux envoy-cves-darwin
+	-rm envoy-cves-linux.sha256 envoy-cves-darwin.sha256 envoy-cves envoy-cves-linux envoy-cves-darwin
