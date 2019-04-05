@@ -27,3 +27,11 @@ wget https://github.com/solo-io/envoy-cves/releases/download/v0.1.0/envoy-cves-l
 chmod +x envoy-cves
 docker  run -v $PWD/envoy-cves:/bin/envoy-cves --entrypoint=/bin/envoy-cves envoyproxy/envoy
 ```
+# How to run this inside a running a container?
+We can copy and run inside a running kuberentes container:
+```
+kubectl -n gloo-system cp envoy-cves gateway-proxy-7f5dcc6c46-vp88v:/tmp/envoy-cves
+kubectl -n gloo-system exec gateway-proxy-7f5dcc6c46-vp88v /tmp/envoy-cves
+✔ Success! your envoy was tested and it is immune to CVE-2019-9901. Make sure the option normalize_path is turned on in your HCM settings.
+✔ Success! your envoy was tested and it is immune to CVE-2019-9900
+```
